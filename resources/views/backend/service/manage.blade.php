@@ -13,7 +13,7 @@
     <div class="page-head">
         <!-- BEGIN PAGE TITLE -->
         <div class="page-title">
-            <h1>Kendaraan
+            <h1>Service
                 <small>Manage</small>
             </h1>
         </div>
@@ -27,7 +27,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('backend.kendaraan.manage') }}">Kendaraan</a>
+            <a href="{{ route('backend.service.manage') }}">Service</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
@@ -43,14 +43,9 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-settings font-green"></i>
-                        <span class="caption-subject font-green sbold uppercase">Manage Kendaraan</span>
+                        <span class="caption-subject font-green sbold uppercase">Manage Service</span>
                     </div>
                     <div class="actions">
-                        <div class="btn-group btn-group-devided">
-                            <a href="{{ route('backend.kendaraan.create') }}" class="btn btn-circle green">
-                                <i class="fa fa-plus"></i> Add new data
-                            </a>
-                        </div>
                         <div class="btn-group">
                             <a class="btn red btn-outline btn-circle" href="javascript:;" data-toggle="dropdown">
                                 <i class="fa fa-share"></i>
@@ -89,11 +84,8 @@
                             <tr>
                                 <th> No </th>
                                 <th> Nama Kendaraan </th>
-                                <th> Merek </th>
-                                <th> Tipe </th>
-                                <th> Warna </th>
-                                <th> Harga Sewa </th>
-                                <th> Status </th>
+                                <th> Tanggal Service </th>
+                                <th> Total </th>
                                 <th> Action </th>
                             </tr>
                             </thead>
@@ -102,16 +94,11 @@
                             @foreach($model as $row)
                                 <tr>
                                     <td> {{ $no }} </td>
-                                    <td> {{ $row->nama }} - {{ $row->plat_no }}</td>
-                                    <td> {{ $row->merek }} </td>
-                                    <td> {{ $row->getType() }} </td>
-                                    <td> {{ $row->warna }} </td>
-                                    <td> {{ number_format($row->harga,0,',','.') }} </td>
-                                    <td> {{ $row->getStatus() }} </td>
+                                    <td> {{ $row->kendaraan->nama }} - {{ $row->kendaraan->plat_no }}</td>
+                                    <td> {{ date('d/m/Y',strtotime($row->service_date)) }} </td>
+                                    <td> {{ number_format($row->total,0,',','.') }} </td>
                                     <td class="center" width="130">
-                                        <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('backend.kendaraan.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
-                                        <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('backend.service.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                                 <?php $no++ ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Mar 2017 pada 04.33
+-- Generation Time: 10 Mar 2017 pada 05.39
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -46,7 +46,8 @@ CREATE TABLE `kendaraan` (
 --
 
 INSERT INTO `kendaraan` (`id`, `nama`, `image`, `merek`, `type`, `warna`, `plat_no`, `status`, `harga`, `tgl_service`, `created_at`, `updated_at`) VALUES
-(1, 'Honda Supra', '800086d106de50fa21eb6bc5992ebeb6.jpg', 'Honda', 1, 'Hitam', 'DK1000ED', 1, 75000, 8, '2017-03-08 19:10:07', '2017-03-08 19:26:51');
+(1, 'Honda Supra', '800086d106de50fa21eb6bc5992ebeb6.jpg', 'Honda', 1, 'Hitam', 'DK1000ED', 1, 75000, 14, '2017-03-08 19:10:07', '2017-03-08 19:26:51'),
+(2, 'Honda Scoopy', 'aee922459b322e4d2017bd748773eb89.jpg', 'Honda', 1, 'Hitam-Merah', 'DK3000NA', 1, 100000, 10, '2017-03-09 18:45:07', '2017-03-09 18:45:07');
 
 -- --------------------------------------------------------
 
@@ -132,9 +133,17 @@ CREATE TABLE `service` (
   `kendaraan_id` int(11) DEFAULT NULL,
   `service_date` date DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `service`
+--
+
+INSERT INTO `service` (`id`, `kendaraan_id`, `service_date`, `total`, `image`, `created_at`, `updated_at`) VALUES
+(1, 2, '2017-08-03', 73000, '146b8736183d68296ec2a76157f19052.jpg', '2017-03-09 20:07:14', '2017-03-09 20:07:14');
 
 -- --------------------------------------------------------
 
@@ -213,7 +222,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kendaraan`
 --
 ALTER TABLE `kendaraan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -223,7 +232,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -16,4 +16,16 @@ class Kendaraan extends Model
         }
         return $tgl_service;
     }
+
+    public function getStatus()
+    {
+        $status = ['1'=>'Tersedia', '2'=>'Sedang Disewa','3'=>'Tidak Disewakan'];
+        return $status[$this->status];
+    }
+
+    public function getType()
+    {
+        $type = ['1'=>"Sepeda Motor", '2'=>"Mobil"];
+        return $type[$this->type];
+    }
 }
