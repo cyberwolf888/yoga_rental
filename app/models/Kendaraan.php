@@ -8,6 +8,10 @@ class Kendaraan extends Model
 {
     protected $table = 'kendaraan';
 
+    const S_TESERDIA = 1;
+    const S_TIDAK_TESERDIA = 0;
+    const S_SEDANG_DISEWA = 2;
+
     public function getTglService()
     {
         $tgl_service=[];

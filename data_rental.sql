@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 Mar 2017 pada 05.39
+-- Generation Time: 12 Mar 2017 pada 06.09
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -148,6 +148,36 @@ INSERT INTO `service` (`id`, `kendaraan_id`, `service_date`, `total`, `image`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL,
+  `kendaraan_id` int(11) NOT NULL DEFAULT '0',
+  `nama` varchar(100) DEFAULT NULL,
+  `telp` varchar(12) DEFAULT NULL,
+  `alamat` text,
+  `id_type` int(1) DEFAULT NULL,
+  `id_no` varchar(100) DEFAULT NULL,
+  `id_image` varchar(225) DEFAULT NULL,
+  `tgl_sewa` date DEFAULT NULL,
+  `durasi` int(2) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `kendaraan_id`, `nama`, `telp`, `alamat`, `id_type`, `id_no`, `id_image`, `tgl_sewa`, `durasi`, `total`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-13', 3, 300000, 2, '2017-03-11 20:46:17', '2017-03-11 21:08:59');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -208,6 +238,12 @@ ALTER TABLE `service`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -232,6 +268,11 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`

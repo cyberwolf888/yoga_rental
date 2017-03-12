@@ -49,4 +49,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
         Route::get('/delete/{id}', 'Backend\ServiceController@destroy')->name('.delete');
     });
 
+    Route::group(['prefix' => 'transaksi','middleware' => ['role:admin|operator'], 'as'=>'.transaksi'], function() {
+        Route::get('/', 'Backend\TransaksiController@index')->name('.manage');
+        Route::get('/kendaraan', 'Backend\TransaksiController@kendaraan')->name('.kendaraan');
+        Route::get('/create/{id}', 'Backend\TransaksiController@create')->name('.create');
+        Route::post('/create/{id}', 'Backend\TransaksiController@store')->name('.store');
+        Route::get('/detail/{id}', 'Backend\TransaksiController@show')->name('.detail');
+        Route::get('/finish/{id}', 'Backend\TransaksiController@finish')->name('.finish');
+        Route::get('/cancel/{id}', 'Backend\TransaksiController@cancel')->name('.cancel');
+    });
 });

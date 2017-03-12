@@ -184,6 +184,12 @@
                         <span class="title">Service</span>
                     </a>
                 </li>
+                <li class="nav-item start ">
+                    <a href="{{ route('backend.transaksi.manage') }}" class="nav-link ">
+                        <i class="icon-bulb"></i>
+                        <span class="title">Transaksi</span>
+                    </a>
+                </li>
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-settings"></i>
