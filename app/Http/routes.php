@@ -21,13 +21,17 @@ Route::get('/home', 'HomeController@index');
 
 /*
 |--------------------------------------------------------------------------
-| Admin Web Routes
+| Backend Web Routes
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], function() {
     Route::get('/', 'Backend\DashboardController@index')->name('.dashboard');
 
-    //kendaraan
+    /*
+    |--------------------------------------------------------------------------
+    | Kendaraan Web Routes
+    |--------------------------------------------------------------------------
+    */
     Route::group(['prefix' => 'kendaraan','middleware' => ['role:admin|operator'], 'as'=>'.kendaraan'], function() {
         Route::get('/', 'Backend\KendaraanController@index')->name('.manage');
         Route::get('/create', 'Backend\KendaraanController@create')->name('.create');
@@ -35,10 +39,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
         Route::get('/update/{id}', 'Backend\KendaraanController@edit')->name('.edit');
         Route::post('/update/{id}', 'Backend\KendaraanController@update')->name('.update');
         Route::get('/detail/{id}', 'Backend\KendaraanController@show')->name('.detail');
-        Route::get('/delete/{id}', 'Backend\KendaraanController@destroy')->name('.delete');
     });
 
-    //service
+    /*
+    |--------------------------------------------------------------------------
+    | Service Web Routes
+    |--------------------------------------------------------------------------
+    */
     Route::group(['prefix' => 'service','middleware' => ['role:admin|operator'], 'as'=>'.service'], function() {
         Route::get('/', 'Backend\ServiceController@index')->name('.manage');
         Route::get('/create/{id}', 'Backend\ServiceController@create')->name('.create');
@@ -46,9 +53,13 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
         Route::get('/update/{id}', 'Backend\ServiceController@edit')->name('.edit');
         Route::post('/update/{id}', 'Backend\ServiceController@update')->name('.update');
         Route::get('/detail/{id}', 'Backend\ServiceController@show')->name('.detail');
-        Route::get('/delete/{id}', 'Backend\ServiceController@destroy')->name('.delete');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Transaksi Web Routes
+    |--------------------------------------------------------------------------
+    */
     Route::group(['prefix' => 'transaksi','middleware' => ['role:admin|operator'], 'as'=>'.transaksi'], function() {
         Route::get('/', 'Backend\TransaksiController@index')->name('.manage');
         Route::get('/kendaraan', 'Backend\TransaksiController@kendaraan')->name('.kendaraan');
@@ -58,4 +69,38 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
         Route::get('/finish/{id}', 'Backend\TransaksiController@finish')->name('.finish');
         Route::get('/cancel/{id}', 'Backend\TransaksiController@cancel')->name('.cancel');
     });
+
+
+    Route::group(['prefix' => 'users','middleware' => ['role:admin'], 'as'=>'.users'], function() {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Operator Web Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::group(['prefix' => 'operator','middleware' => ['role:admin'], 'as'=>'.operator'], function() {
+            Route::get('/', 'Backend\UsersController@operator')->name('.manage');
+            Route::get('/create', 'Backend\UsersController@create_operator')->name('.create');
+            Route::post('/create', 'Backend\UsersController@store_operator')->name('.store');
+            Route::get('/update/{id}', 'Backend\UsersController@edit_operator')->name('.edit');
+            Route::post('/update/{id}', 'Backend\UsersController@update_operator')->name('.update');
+            Route::get('/detail/{id}', 'Backend\UsersController@show_operator')->name('.detail');
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | admin Web Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::group(['prefix' => 'admin','middleware' => ['role:admin'], 'as'=>'.admin'], function() {
+            Route::get('/', 'Backend\UsersController@admin')->name('.manage');
+            Route::get('/create', 'Backend\UsersController@create_admin')->name('.create');
+            Route::post('/create', 'Backend\UsersController@store_admin')->name('.store');
+            Route::get('/update/{id}', 'Backend\UsersController@edit_admin')->name('.edit');
+            Route::post('/update/{id}', 'Backend\UsersController@update_admin')->name('.update');
+            Route::get('/detail/{id}', 'Backend\UsersController@show_admin')->name('.detail');
+        });
+
+    });
+
 });

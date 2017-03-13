@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input {{ $errors->has('status') ? ' has-error' : '' }}">
-                                {!! Form::select('status', ['1'=>'Tersedia','2'=>'Sedang disewa'], $model->status,['id'=>'status','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                                {!! Form::select('status', ['1'=>'Tersedia','2'=>'Sedang disewa','0'=>'Tidak disewakan'], $model->status,['id'=>'status','placeholder'=>'','class'=>'form-control', 'required']) !!}
                                 <label for="status">Status Kendaraan</label>
                             </div>
 
@@ -110,7 +110,7 @@
                                                         <span class="btn default btn-file">
                                                             <span class="fileinput-new"> Select image </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="image" required> </span>
+                                                            <input type="file" name="image"> </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                     </div>
                                 </div>

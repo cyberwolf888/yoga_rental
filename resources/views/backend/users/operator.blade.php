@@ -13,7 +13,7 @@
     <div class="page-head">
         <!-- BEGIN PAGE TITLE -->
         <div class="page-title">
-            <h1>Kendaraan
+            <h1>Operator
                 <small>Manage</small>
             </h1>
         </div>
@@ -27,7 +27,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('backend.kendaraan.manage') }}">Kendaraan</a>
+            <a href="{{ route('backend.users.operator.manage') }}">Operator</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
@@ -43,11 +43,11 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-settings font-green"></i>
-                        <span class="caption-subject font-green sbold uppercase">Manage Kendaraan</span>
+                        <span class="caption-subject font-green sbold uppercase">Manage Operator</span>
                     </div>
                     <div class="actions">
                         <div class="btn-group btn-group-devided">
-                            <a href="{{ route('backend.kendaraan.create') }}" class="btn btn-circle green">
+                            <a href="{{ route('backend.users.operator.create') }}" class="btn btn-circle green">
                                 <i class="fa fa-plus"></i> Add new data
                             </a>
                         </div>
@@ -88,11 +88,9 @@
                             <thead>
                             <tr>
                                 <th> No </th>
-                                <th> Nama Kendaraan </th>
-                                <th> Merek </th>
-                                <th> Tipe </th>
-                                <th> Warna </th>
-                                <th> Harga Sewa </th>
+                                <th> Nama Operator </th>
+                                <th> Email </th>
+                                <th> Telp </th>
                                 <th> Status </th>
                                 <th> Action </th>
                             </tr>
@@ -102,16 +100,14 @@
                             @foreach($model as $row)
                                 <tr>
                                     <td> {{ $no }} </td>
-                                    <td> {{ $row->nama }} - {{ $row->plat_no }}</td>
-                                    <td> {{ $row->merek }} </td>
-                                    <td> {{ $row->getType() }} </td>
-                                    <td> {{ $row->warna }} </td>
-                                    <td> {{ number_format($row->harga,0,',','.') }} </td>
+                                    <td> {{ $row->name }}</td>
+                                    <td> {{ $row->email }} </td>
+                                    <td> {{ $row->telp }} </td>
                                     <td> {{ $row->getStatus() }} </td>
                                     <td class="center" width="130">
-                                        <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('backend.kendaraan.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
-                                        <!-- <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a> -->
+                                        <a href="{{ route('backend.users.operator.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('backend.users.operator.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <!-- <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a> -->
                                     </td>
                                 </tr>
                                 <?php $no++ ?>

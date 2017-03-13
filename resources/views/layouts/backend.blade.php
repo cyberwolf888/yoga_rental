@@ -101,7 +101,7 @@
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                            <img alt="" class="img-circle" src="{{ url('assets') }}/backend/layouts/layout4/img/avatar9.jpg" /> </a>
+                            <img alt="" class="img-circle" src="{{ url('assets') }}/backend/layouts/layout4/img/no_ava.jpg" /> </a>
 
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
@@ -172,23 +172,42 @@
                 <li class="heading">
                     <h3 class="uppercase">Features</h3>
                 </li>
-                <li class="nav-item start ">
+                <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
-                        <i class="icon-bulb"></i>
+                        <i class="icon-rocket"></i>
                         <span class="title">Kendaraan</span>
                     </a>
                 </li>
-                <li class="nav-item start ">
+                <li class="nav-item @if (str_is('*.service.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.service.manage') }}" class="nav-link ">
-                        <i class="icon-bulb"></i>
+                        <i class="icon-book-open"></i>
                         <span class="title">Service</span>
                     </a>
                 </li>
-                <li class="nav-item start ">
+                <li class="nav-item @if (str_is('*.transaksi.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.transaksi.manage') }}" class="nav-link ">
-                        <i class="icon-bulb"></i>
+                        <i class="icon-basket-loaded"></i>
                         <span class="title">Transaksi</span>
                     </a>
+                </li>
+                <li class="nav-item @if (str_is('*.users.*', Route::currentRouteName())) open active @endif ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-users"></i>
+                        <span class="title">User</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item @if (str_is('*.operator.*', Route::currentRouteName())) active @endif ">
+                            <a href="{{ route('backend.users.operator.manage') }}" class="nav-link ">
+                                <span class="title">Operator</span>
+                            </a>
+                        </li>
+                        <li class="nav-item @if (str_is('*.admin.*', Route::currentRouteName())) active @endif ">
+                            <a href="{{ route('backend.users.admin.manage') }}" class="nav-link ">
+                                <span class="title">Admin</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
@@ -262,5 +281,10 @@
 <script src="{{ url('assets') }}/backend/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/backend/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+<script>
+    $(".quick-sidebar-toggler").click(function () {
+        window.location = "<?= url('logout') ?>";
+    })
+</script>
 </body>
 </html>

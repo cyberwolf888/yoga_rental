@@ -65,6 +65,7 @@ class TransaksiController extends Controller
         $model->id_image = $file->basename;
         $model->tgl_sewa = date('Y/m/d',strtotime($request->tgl_sewa));
         $model->durasi = $request->durasi;
+        $model->denda = 0;
         $model->total = $kendaraan->harga*$model->durasi;
         $model->status = Transaksi::S_NEW;
         $model->save();
@@ -87,6 +88,8 @@ class TransaksiController extends Controller
     {
         $model = Transaksi::findOrFail($id);
         $model->status = Transaksi::S_FINSIH;
+        $model->denda = $model->getDenda();
+        $model->tgl_kembali = date('Y-m-d');
         $model->save();
 
         return redirect()->route('backend.transaksi.manage');

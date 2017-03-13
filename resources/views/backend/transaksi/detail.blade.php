@@ -37,19 +37,26 @@
     <!-- END PAGE BREADCRUMB -->
     <!-- BEGIN PAGE BASE CONTENT -->
     @if($model->status == \App\Models\Transaksi::S_NEW)
-    <div class="row">
-        <div class="col-md-12 ">
-            <a href="{{ route('backend.transaksi.finish',$model->id) }}" class="btn btn-circle green-jungle">
-                <i class="fa fa-check"></i> Selesaikan Transaksi
-            </a>
+        <div class="row">
+            <div class="col-md-12 ">
+                <a href="{{ route('backend.transaksi.finish',$model->id) }}" class="btn btn-circle green-jungle">
+                    <i class="fa fa-check"></i> Selesaikan Transaksi
+                </a>
 
-            <a href="{{ route('backend.transaksi.cancel',$model->id) }}" class="btn btn-circle red-mint">
-                <i class="fa fa-close"></i> Batalkan Transaksi
-            </a>
+                <a href="{{ route('backend.transaksi.cancel',$model->id) }}" class="btn btn-circle red-mint">
+                    <i class="fa fa-close"></i> Batalkan Transaksi
+                </a>
+            </div>
         </div>
-    </div>
-    <br>
+        <br>
+        @if($model->getDenda()>0)
+            <div class="alert alert-block alert-danger fade in">
+                <button type="button" class="close" data-dismiss="alert"></button>
+                <h4 class="alert-heading">Pelanggan ini mendapatkan denda sebesar Rp. {{ number_format($model->getDenda(),0,',','.') }}</h4>
+            </div>
+        @endif
     @endif
+
     <div class="row">
         <div class="col-md-6 ">
 
@@ -87,7 +94,7 @@
                         <tr>
                             <td>
                                 <h4><small>Tipe Identitas</small></h4>
-                                <h4>{{ $model->id_type }}</h4>
+                                <h4>{{ $model->getIdType() }}</h4>
                             </td>
                         </tr>
                         <tr>
@@ -112,6 +119,28 @@
                             <td>
                                 <h4><small>Durasi</small></h4>
                                 <h4>{{ $model->durasi }} Hari</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @if($model->status == \App\Models\Transaksi::S_FINSIH)
+                                    <h4><small>Tanggal Dikembalikan</small></h4>
+                                    <h4>{{ date('d/m/Y',strtotime($model->tgl_kembali)) }}</h4>
+                                @else
+                                    <h4><small>Tanggal Dikembalikan</small></h4>
+                                    <h4>Belum Dikembalikan</h4>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @if($model->status == \App\Models\Transaksi::S_NEW)
+                                    <h4><small>Denda</small></h4>
+                                    <h4>Rp {{ number_format($model->getDenda(),0,',','.') }}</h4>
+                                @else
+                                    <h4><small>Denda</small></h4>
+                                    <h4>Rp {{ number_format($model->denda,0,',','.') }}</h4>
+                                @endif
                             </td>
                         </tr>
                         <tr>
