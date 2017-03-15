@@ -51,6 +51,8 @@ class UsersController extends Controller
         $model->status = $request->status;
         $model->save();
 
+        $model->attachRole(1);
+
         return redirect()->route('backend.users.operator.manage');
     }
 
@@ -99,17 +101,42 @@ class UsersController extends Controller
     */
     public function admin()
     {
-        //
+        $model = User::where('type',1)->orderBy('id','desc')->get();
+        return view('backend/users/admin',[
+            'model'=>$model
+        ]);
     }
 
     public function create_admin()
     {
-        //
+        $model = new User();
+        return view('backend/users/form_admin',[
+            'model'=>$model
+        ]);
     }
 
     public function store_admin(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'telp' => 'required',
+            'status' => 'required'
+        ]);
+
+        $model = new User();
+        $model->name = $request->name;
+        $model->telp = $request->telp;
+        $model->email = $request->email;
+        $model->password = bcrypt($request->password);
+        $model->type = 1;
+        $model->status = $request->status;
+        $model->save();
+
+        $model->attachRole(2);
+
+        return redirect()->route('backend.users.admin.manage');
     }
 
     public function show_admin($id)
@@ -119,12 +146,33 @@ class UsersController extends Controller
 
     public function edit_admin($id)
     {
-        //
+        $model = User::findOrFail($id);
+        return view('backend/users/form_admin',[
+            'model'=>$model,
+            'update'=>true
+        ]);
     }
 
     public function update_admin(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|confirmed',
+            'telp' => 'required',
+            'status' => 'required'
+        ]);
+
+        $model = User::findOrFail($id);
+        $model->name = $request->name;
+        $model->telp = $request->telp;
+        $model->email = $request->email;
+        $model->password = bcrypt($request->password);
+        $model->type = 1;
+        $model->status = $request->status;
+        $model->save();
+
+        return redirect()->route('backend.users.admin.manage');
     }
 
 }

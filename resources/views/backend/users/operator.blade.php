@@ -105,7 +105,6 @@
                                     <td> {{ $row->telp }} </td>
                                     <td> {{ $row->getStatus() }} </td>
                                     <td class="center" width="130">
-                                        <a href="{{ route('backend.users.operator.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('backend.users.operator.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
                                     <!-- <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a> -->
                                     </td>

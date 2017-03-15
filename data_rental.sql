@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Mar 2017 pada 06.09
+-- Generation Time: 15 Mar 2017 pada 04.30
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -120,7 +120,10 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
-(1, 2);
+(1, 2),
+(2, 1),
+(3, 2),
+(4, 1);
 
 -- --------------------------------------------------------
 
@@ -162,8 +165,10 @@ CREATE TABLE `transaksi` (
   `id_image` varchar(225) DEFAULT NULL,
   `tgl_sewa` date DEFAULT NULL,
   `durasi` int(2) DEFAULT NULL,
+  `denda` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
+  `tgl_kembali` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -172,8 +177,8 @@ CREATE TABLE `transaksi` (
 -- Dumping data untuk tabel `transaksi`
 --
 
-INSERT INTO `transaksi` (`id`, `kendaraan_id`, `nama`, `telp`, `alamat`, `id_type`, `id_no`, `id_image`, `tgl_sewa`, `durasi`, `total`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-13', 3, 300000, 2, '2017-03-11 20:46:17', '2017-03-11 21:08:59');
+INSERT INTO `transaksi` (`id`, `kendaraan_id`, `nama`, `telp`, `alamat`, `id_type`, `id_no`, `id_image`, `tgl_sewa`, `durasi`, `denda`, `total`, `status`, `tgl_kembali`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-07', 3, 300000, 300000, 2, '2017-03-13', '2017-03-11 20:46:17', '2017-03-13 04:25:16');
 
 -- --------------------------------------------------------
 
@@ -185,6 +190,7 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telp` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` int(1) DEFAULT NULL,
@@ -197,8 +203,11 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', '7fBCunoAhYhIqRPEOYYkLGk1JDQGqn6OANr1yBzsw00fW8Cb8cNEZ4ewPsd3', 1, 1, '2017-03-02 21:49:08', '2017-03-03 18:53:50');
+INSERT INTO `users` (`id`, `name`, `email`, `telp`, `password`, `remember_token`, `type`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@mail.com', '085737343456', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', 'gFMbWSecQNu3vR7I82tzf6EwYWhDDLmzyhBEJUGqfY6uEOwYOb4fzYQNreK6', 1, 1, '2017-03-02 21:49:08', '2017-03-14 19:30:03'),
+(2, 'Test Operator', 'operator@mail.com', '08573736483', '$2y$10$GVVx1dXRRaMCeqKxLOAxoesiIPHRtyVmed7lR9/ejUXa6iaBMDYXi', NULL, 2, 1, '2017-03-13 05:44:16', '2017-03-13 05:52:09'),
+(3, 'Admin Test', 'admin2@mail.com', '085737343456', '$2y$10$2dAYQNTVNhDruggKIqRaTuZtAQETnhKAr2LLtNeBX30c/.ntRGzOG', NULL, 1, 1, '2017-03-14 19:21:49', '2017-03-14 19:21:49'),
+(4, 'Operator Awesome', 'awesome@mail.com', '08474283728', '$2y$10$YgZeq5P7BJnIJvcLIJbLSORIW9i0XOWJ.RbniMjZ0d5AKFmH7Y.tW', 'RIgzVSlCTBElZPgrwG48uUmNF7XgYhwPL8kqvTl1UR8lRgH9NXl5UjumNPPs', 2, 1, '2017-03-14 19:25:49', '2017-03-14 19:29:47');
 
 --
 -- Indexes for dumped tables
@@ -278,7 +287,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
