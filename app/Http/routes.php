@@ -103,4 +103,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
 
     });
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laporan Web Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'laporan','middleware' => ['role:admin'], 'as'=>'.laporan'], function() {
+        Route::get('/', 'Backend\LaporanController@priod')->name('.priod');
+        Route::post('/result', 'Backend\LaporanController@result')->name('.result');
+    });
+
 });

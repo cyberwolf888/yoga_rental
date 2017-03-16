@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <h4><small>Harga Sewa</small></h4>
+                                <h4><small>Total Service</small></h4>
                                 <h4>{{ number_format($model->total,0,',','.') }}</h4>
                             </td>
                         </tr>

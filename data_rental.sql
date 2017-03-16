@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 Mar 2017 pada 04.30
+-- Generation Time: 16 Mar 2017 pada 04.22
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -146,7 +146,8 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `kendaraan_id`, `service_date`, `total`, `image`, `created_at`, `updated_at`) VALUES
-(1, 2, '2017-08-03', 73000, '146b8736183d68296ec2a76157f19052.jpg', '2017-03-09 20:07:14', '2017-03-09 20:07:14');
+(1, 2, '2017-08-03', 73000, '146b8736183d68296ec2a76157f19052.jpg', '2017-03-09 20:07:14', '2017-03-09 20:07:14'),
+(3, 1, '2017-03-16', 100000, 'cf09a56182f8ffda31c082129a3b06ff.jpg', '2017-03-15 18:32:58', '2017-03-15 18:32:58');
 
 -- --------------------------------------------------------
 
@@ -178,7 +179,8 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `kendaraan_id`, `nama`, `telp`, `alamat`, `id_type`, `id_no`, `id_image`, `tgl_sewa`, `durasi`, `denda`, `total`, `status`, `tgl_kembali`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-07', 3, 300000, 300000, 2, '2017-03-13', '2017-03-11 20:46:17', '2017-03-13 04:25:16');
+(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-07', 3, 300000, 300000, 2, '2017-03-13', '2017-03-11 20:46:17', '2017-03-13 04:25:16'),
+(2, 1, 'Hendra', '0822373734', 'Jalan Nangka Utara', 2, '1231232334345', '68904290369c28c06c8d1fe012501070.jpg', '2017-03-16', 3, 0, 225000, 2, '2017-03-16', '2017-03-15 18:54:09', '2017-03-15 18:54:13');
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `telp`, `password`, `remember_token`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '085737343456', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', 'gFMbWSecQNu3vR7I82tzf6EwYWhDDLmzyhBEJUGqfY6uEOwYOb4fzYQNreK6', 1, 1, '2017-03-02 21:49:08', '2017-03-14 19:30:03'),
+(1, 'admin', 'admin@mail.com', '085737343456', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', 'lHMnv9kWdkxtCvaAok37TpfYLnozL7GQBxKSMCpRCKa606UgD1JFbYYeYINc', 1, 1, '2017-03-02 21:49:08', '2017-03-15 19:22:21'),
 (2, 'Test Operator', 'operator@mail.com', '08573736483', '$2y$10$GVVx1dXRRaMCeqKxLOAxoesiIPHRtyVmed7lR9/ejUXa6iaBMDYXi', NULL, 2, 1, '2017-03-13 05:44:16', '2017-03-13 05:52:09'),
 (3, 'Admin Test', 'admin2@mail.com', '085737343456', '$2y$10$2dAYQNTVNhDruggKIqRaTuZtAQETnhKAr2LLtNeBX30c/.ntRGzOG', NULL, 1, 1, '2017-03-14 19:21:49', '2017-03-14 19:21:49'),
 (4, 'Operator Awesome', 'awesome@mail.com', '08474283728', '$2y$10$YgZeq5P7BJnIJvcLIJbLSORIW9i0XOWJ.RbniMjZ0d5AKFmH7Y.tW', 'RIgzVSlCTBElZPgrwG48uUmNF7XgYhwPL8kqvTl1UR8lRgH9NXl5UjumNPPs', 2, 1, '2017-03-14 19:25:49', '2017-03-14 19:29:47');
@@ -277,12 +279,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --

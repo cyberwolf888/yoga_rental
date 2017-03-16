@@ -184,7 +184,7 @@
 <script>
     jQuery(document).ready(function(){
         jQuery().datepicker&&$(".date-picker").datepicker({
-            format: 'dd/mm/yyyy',
+            format: 'dd-mm-yyyy',
             orientation:"left",
             autoclose:!0
         });

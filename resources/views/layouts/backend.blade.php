@@ -187,19 +187,11 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-settings"></i>
-                        <span class="title">System</span>
-                        <span class="arrow"></span>
+                <li class="nav-item @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif ">
+                    <a href="{{ route('backend.laporan.priod') }}" class="nav-link ">
+                        <i class="icon-docs"></i>
+                        <span class="title">Laporan</span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="page_cookie_consent_1.html" class="nav-link ">
-                                <span class="title">Cookie Consent 1</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 @endrole
 
