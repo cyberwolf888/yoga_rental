@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Service;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
@@ -17,20 +18,23 @@ class LaporanController extends Controller
 
     public function result(Request $request)
     {
-        $start_date = date('Y/m/d', strtotime($request->start_date));
-        $end_date = date('Y/m/d', strtotime($request->end_date));
-        $model = Transaksi::whereRaw('created_at >= "'.$start_date.'"')->whereRaw('created_at <= "'.$end_date.'"');
-        $total_profit = \DB::select("SELECT sum(denda+total) AS total_profit FROM transaksi WHERE status = 2");
+        $bulan = [1=>'Januari',2=>'Februari',3=>'Maret',4=>'April',5=>'Mei',6=>'Juni',7=>'Juli',8=>'Agustus',9=>'September',10=>'Oktober',11=>'Nopember',12=>'Desember'];
+        $model = Transaksi::whereRaw('MONTH(created_at)= "'.$request->bulan.'"');
+        $total_profit = \DB::select("SELECT sum(denda+total) AS total_profit FROM transaksi WHERE status = 2 AND MONTH(created_at)=".$request->bulan);
         $total_transaksi = $model->count();
-        $total_success = Transaksi::whereRaw('created_at >= "'.$start_date.'"')->whereRaw('created_at <= "'.$end_date.'"')->whereRaw('status = 2')->count();
+        $total_success = Transaksi::whereRaw('MONTH(created_at)= "'.$request->bulan.'"')->whereRaw('status = 2')->count();
         $persen = (100/$total_transaksi)*$total_success;
+
+        $service = Service::whereRaw('MONTH(created_at)= "'.$request->bulan.'"')->get();
+        $total_service = \DB::select("SELECT sum(total) AS total_service FROM service WHERE MONTH(created_at)=".$request->bulan);
         return view('backend/laporan/result',[
             'model'=>$model->get(),
             'total_profit'=>$total_profit['0']->total_profit,
             'persen'=>$persen,
             'total_transaksi'=>$total_transaksi,
-            'start_date'=>$request->start_date,
-            'end_date'=>$request->end_date
+            'service'=>$service,
+            'total_service'=>$total_service['0']->total_service,
+            'periode'=>$bulan[$request->bulan]
         ]);
     }
 }

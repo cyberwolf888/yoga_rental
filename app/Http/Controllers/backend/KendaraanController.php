@@ -35,6 +35,7 @@ class KendaraanController extends Controller
             'plat_no' => 'required|max:10',
             'status' => 'required|max:11|alpha_num',
             'harga' => 'required|max:11|alpha_num',
+            'kmmeter' => 'required|max:11|alpha_num',
             'image' => 'required|image|max:3500'
         ]);
         $path = base_path('images/kendaraan/');
@@ -49,6 +50,7 @@ class KendaraanController extends Controller
         $model->plat_no = $request->plat_no;
         $model->status = $request->status;
         $model->harga = $request->harga;
+        $model->kmmeter = $request->kmmeter;
         $model->tgl_service = $request->tgl_service;
         $model->save();
 
@@ -79,6 +81,7 @@ class KendaraanController extends Controller
             'plat_no' => 'required|max:10',
             'status' => 'required|max:11|alpha_num',
             'harga' => 'required|max:11|alpha_num',
+            'kmmeter' => 'required|max:11|alpha_num',
             'image' => 'image|max:3500'
         ]);
 
@@ -100,6 +103,7 @@ class KendaraanController extends Controller
         $model->plat_no = $request->plat_no;
         $model->status = $request->status;
         $model->harga = $request->harga;
+        $model->kmmeter = $request->kmmeter;
         $model->tgl_service = $request->tgl_service;
         $model->save();
 

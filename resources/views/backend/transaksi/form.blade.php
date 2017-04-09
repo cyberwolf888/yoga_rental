@@ -114,7 +114,7 @@
 
                         <div class="form-group form-md-line-input {{ $errors->has('total') ? ' has-error' : '' }}">
                             {!! Form::number('total', $model->total, ['id'=>'total','placeholder'=>'','class'=>'form-control', 'required', 'readonly']) !!}
-                            <label for="harga">Total Service</label>
+                            <label for="harga">Total</label>
                         </div>
 
 
@@ -188,6 +188,12 @@
                             <td>
                                 <h4><small>Harga Sewa</small></h4>
                                 <h4>{{ number_format($kendaraan->harga,0,',','.') }}</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4><small>Km Meter</small></h4>
+                                <h4>{{ number_format($kendaraan->kmmeter,0,',','.') }} km</h4>
                             </td>
                         </tr>
                         <tr>

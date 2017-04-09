@@ -60,7 +60,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index-2.html"><img src="{{ url('assets/frontend') }}/img/logo-rentit.png" alt="Rent It"/></a>
+                    <a href="index-2.html"><img src="{{ url('assets') }}/backend/layouts/layout4/img/logo-white-small.png" alt="Rent It"/></a>
                 </div>
                 <!-- /Logo -->
 

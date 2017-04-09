@@ -92,8 +92,13 @@
                             </div>
 
                             <div class="form-group form-md-line-input {{ $errors->has('harga') ? ' has-error' : '' }}">
-                                {!! Form::number('harga', $model->harga, ['id'=>'harga','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                                {!! Form::number('harga', $model->harga, ['id'=>'harga','placeholder'=>'','class'=>'form-control', 'required','min'=>0]) !!}
                                 <label for="harga">Harga Sewa /Hari</label>
+                            </div>
+
+                            <div class="form-group form-md-line-input {{ $errors->has('kmmeter') ? ' has-error' : '' }}">
+                                {!! Form::number('kmmeter', $model->kmmeter, ['id'=>'kmmeter','placeholder'=>'','class'=>'form-control', 'required','min'=>0]) !!}
+                                <label for="harga">Km Meter</label>
                             </div>
 
                             <div class="form-group form-md-line-input {{ $errors->has('tgl_service') ? ' has-error' : '' }}">

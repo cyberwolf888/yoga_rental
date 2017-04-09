@@ -18,7 +18,7 @@ class Service extends Model
                 FROM kendaraan AS k 
                 LEFT JOIN (SELECT * FROM service WHERE MONTH(created_at) = '.date('m').') AS s 
                 ON s.kendaraan_id = k.id 
-                WHERE s.service_date IS NULL AND k.tgl_service <= '.date('d'));
+                WHERE s.service_date IS NULL AND k.tgl_service <= '.date('d', strtotime("+3 days")));
 
         return $model;
     }

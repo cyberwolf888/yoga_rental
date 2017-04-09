@@ -62,14 +62,9 @@
                     </div>
                     @endif
 
-                    <div class="form-group form-md-line-input">
-                        {!! Form::text('start_date', null, ['id'=>'start_date','placeholder'=>'','class'=>'form-control date-picker', 'required', 'readonly']) !!}
-                        <label for="start_date">Start Date</label>
-                    </div>
-
-                    <div class="form-group form-md-line-input">
-                        {!! Form::text('end_date', null, ['id'=>'end_date','placeholder'=>'','class'=>'form-control date-picker', 'required', 'readonly']) !!}
-                        <label for="end_date">End Date</label>
+                    <div class="form-group form-md-line-input ">
+                        {!! Form::select('bulan', [1=>'Januari',2=>'Februari',3=>'Maret',4=>'April',5=>'Mei',6=>'Juni',7=>'Juli',8=>'Agustus',9=>'September',10=>'Oktober',11=>'Nopember',12=>'Desember'], null,['id'=>'bulan','class'=>'form-control', 'required']) !!}
+                        <label for="tgl_service">Bulan</label>
                     </div>
                 </div>
                 <div class="form-actions noborder">

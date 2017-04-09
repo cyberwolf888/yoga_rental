@@ -65,6 +65,8 @@ class TransaksiController extends Controller
         $model->id_image = $file->basename;
         $model->tgl_sewa = date('Y/m/d',strtotime($request->tgl_sewa));
         $model->durasi = $request->durasi;
+        $model->kmstart = $kendaraan->kmmeter;
+        $model->kmend = 0;
         $model->denda = 0;
         $model->total = $kendaraan->harga*$model->durasi;
         $model->status = Transaksi::S_NEW;
@@ -84,12 +86,13 @@ class TransaksiController extends Controller
         ]);
     }
 
-    public function finish($id)
+    public function finish(Request $request, $id)
     {
         $model = Transaksi::findOrFail($id);
         $model->status = Transaksi::S_FINSIH;
         $model->denda = $model->getDenda();
         $model->tgl_kembali = date('Y-m-d');
+        $model->kmend = $request->km_end;
         $model->save();
 
         return redirect()->route('backend.transaksi.manage');
@@ -102,5 +105,14 @@ class TransaksiController extends Controller
         $model->save();
 
         return redirect()->route('backend.transaksi.manage');
+    }
+
+    public function invoice($id)
+    {
+        $model = Transaksi::findOrFail($id);
+
+        return view('backend/transaksi/invoice',[
+            'model'=>$model
+        ]);
     }
 }

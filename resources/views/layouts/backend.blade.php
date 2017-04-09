@@ -149,6 +149,8 @@
                 <li class="heading">
                     <h3 class="uppercase">Features</h3>
                 </li>
+
+                @role('operator')
                 <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
                         <i class="icon-rocket"></i>
@@ -167,6 +169,8 @@
                         <span class="title">Transaksi</span>
                     </a>
                 </li>
+                @endrole
+
                 @role('admin')
                 <li class="nav-item @if (str_is('*.users.*', Route::currentRouteName())) open active @endif ">
                     <a href="javascript:;" class="nav-link nav-toggle">

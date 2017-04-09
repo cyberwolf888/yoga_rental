@@ -87,7 +87,6 @@
                         <table class="table table-striped table-bordered table-hover" id="sample_3">
                             <thead>
                             <tr>
-                                <th> No </th>
                                 <th> Transaksi </th>
                                 <th> Nama Kendaraan </th>
                                 <th> Nama Customer </th>
@@ -102,7 +101,6 @@
                             <?php $no =1 ?>
                             @foreach($model as $row)
                                 <tr>
-                                    <td> {{ $no }} </td>
                                     <td> {{ date('d/m/Y',strtotime($row->created_at)) }}</td>
                                     <td> {{ $row->kendaraan->nama }} - {{ $row->kendaraan->plat_no }}</td>
                                     <td> {{ $row->nama }} </td>
@@ -110,8 +108,9 @@
                                     <td> {{ number_format($row->total,0,',','.') }} </td>
                                     <td> {{ date('d/m/Y',strtotime($row->tgl_sewa)) }} </td>
                                     <td> {{ $row->getStatus() }} </td>
-                                    <td class="center" width="130">
+                                    <td class="center" width="100">
                                         <a href="{{ route('backend.transaksi.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('backend.transaksi.invoice',$row->id) }}" class="btn blue btn-xs" target="_blank"><i class="fa fa-print"></i></a>
                                     </td>
                                 </tr>
                                 <?php $no++ ?>

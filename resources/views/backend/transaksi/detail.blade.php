@@ -36,10 +36,16 @@
     </ul>
     <!-- END PAGE BREADCRUMB -->
     <!-- BEGIN PAGE BASE CONTENT -->
+    <div class="row">
+        <div class="col-md-12 ">
+            <a href="{{ route('backend.transaksi.invoice',$model->id) }}" class="btn blue btn-circle" target="_blank"><i class="fa fa-print"></i> Print Invoice</a>
+        </div>
+    </div>
+    <br>
     @if($model->status == \App\Models\Transaksi::S_NEW)
         <div class="row">
             <div class="col-md-12 ">
-                <a href="{{ route('backend.transaksi.finish',$model->id) }}" class="btn btn-circle green-jungle">
+                <a href="javascript:void(0)" class="btn btn-circle green-jungle" id="finish">
                     <i class="fa fa-check"></i> Selesaikan Transaksi
                 </a>
 
@@ -119,6 +125,18 @@
                             <td>
                                 <h4><small>Durasi</small></h4>
                                 <h4>{{ $model->durasi }} Hari</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4><small>Km Start</small></h4>
+                                <h4>{{ number_format($model->kmstart,0,',','.') }} km</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4><small>Km End</small></h4>
+                                <h4>{{ number_format($model->kmend,0,',','.') }} km</h4>
                             </td>
                         </tr>
                         <tr>
@@ -226,6 +244,12 @@
                         </tr>
                         <tr>
                             <td>
+                                <h4><small>Km Meter</small></h4>
+                                <h4>{{ number_format($kendaraan->kmmeter,0,',','.') }} km</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <h4><small>Tanggal Service</small></h4>
                                 <h4>{{ $kendaraan->tgl_service }}</h4>
                             </td>
@@ -239,22 +263,34 @@
         </div>
     </div>
     <!-- END PAGE BASE CONTENT -->
+
+    <form method="post" action="{{ route('backend.transaksi.finish',$model->id) }}" id="frm_finish">
+        {{ csrf_field() }}
+        <input type="hidden" name="km_end" id="km_end">
+    </form>
 @endsection
 
 @push('plugin_scripts')
 <script src="{{ url('assets') }}/backend/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/backend/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="{{ url('assets') }}/backend/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
 @endpush
 
 @push('scripts')
 <script>
     jQuery(document).ready(function(){
+
         jQuery().datepicker&&$(".date-picker").datepicker({
             format: 'dd-mm-yyyy',
             orientation:"left",
             autoclose:!0
         });
         $(document).scroll(function(){$(".date-picker").datepicker("place")});
+
+        $("#finish").click(function(){
+            bootbox.prompt("Km meter motor", function(result){ $("#km_end").val(result); $("#frm_finish").submit(); });
+        });
+
     });
 
     $("#durasi").change(function () {

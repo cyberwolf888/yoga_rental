@@ -100,6 +100,12 @@
                         </tr>
                         <tr>
                             <td>
+                                <h4><small>Km Meter</small></h4>
+                                <h4>{{ number_format($model->kmmeter,0,',','.') }} km</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <h4><small>Tanggal Service</small></h4>
                                 <h4>{{ $model->tgl_service }}</h4>
                             </td>
@@ -110,6 +116,42 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="col-md-6 ">
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="portlet light bordered">
+
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="icon-settings font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase"> Riwayat Pemesanan Kendaraan </span>
+                    </div>
+                </div>
+
+                <div class="portlet-body form">
+                    <table class="table table-bordered m-n" cellspacing="0">
+                        <th>Tgl Sewa</th>
+                        <th>Durasi</th>
+                        <th>Jarak Tempuh</th>
+                        <th>Status</th>
+                        <th></th>
+                        <tbody>
+                        <?php $no =1 ?>
+                        @foreach(\App\Models\Transaksi::where('kendaraan_id',$model->id)->get() as $transaksi)
+                            <tr>
+                                <td>{{ date('d/m/Y',strtotime($transaksi->tgl_sewa)) }}</td>
+                                <td>{{ $transaksi->durasi }} hari</td>
+                                <td>{{ $transaksi->status == \App\Models\Transaksi::S_FINSIH ? $transaksi->kmend-$transaksi->kmstart : '-'}} km</td>
+                                <td>{{ $transaksi->getStatus() }}</td>
+                                <td><a href="{{ route('backend.transaksi.detail',$transaksi->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a></td>
+                            </tr>
+                            <?php $no++ ?>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <!-- END PAGE BASE CONTENT -->

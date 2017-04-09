@@ -111,6 +111,9 @@
                                     <td class="center" width="130">
                                         <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('backend.kendaraan.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
+                                        @if($row->status == \App\Models\Kendaraan::S_TESERDIA)
+                                            <a href="{{ route('backend.transaksi.create',$row->id) }}" class="btn blue btn-xs"><i class="fa fa-check"></i></a>
+                                        @endif
                                         <!-- <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a> -->
                                     </td>
                                 </tr>
