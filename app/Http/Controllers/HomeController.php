@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,5 +26,21 @@ class HomeController extends Controller
     public function index()
     {
         return view('frontend/home');
+    }
+
+    public function mobil()
+    {
+        $model = Kendaraan::where('type',2)->orderBy('id', 'desc')->paginate(5);
+        return view('frontend/mobil',[
+            'model'=>$model
+        ]);
+    }
+
+    public function motor()
+    {
+        $model = Kendaraan::where('type',1)->orderBy('id', 'desc')->paginate(5);
+        return view('frontend/motor',[
+            'model'=>$model
+        ]);
     }
 }

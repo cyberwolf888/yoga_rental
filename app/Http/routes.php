@@ -14,7 +14,9 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('f.home');
+Route::get('/mobil', 'HomeController@mobil')->name('f.mobil');
+Route::get('/motor', 'HomeController@motor')->name('f.motor');
 
 /*
 |--------------------------------------------------------------------------

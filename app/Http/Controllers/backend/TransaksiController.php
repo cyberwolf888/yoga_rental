@@ -95,6 +95,10 @@ class TransaksiController extends Controller
         $model->kmend = $request->km_end;
         $model->save();
 
+        $kendaraan = $model->kendaraan;
+        $kendaraan->kmmeter = $request->km_end;
+        $kendaraan->save();
+
         return redirect()->route('backend.transaksi.manage');
     }
 

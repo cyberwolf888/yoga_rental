@@ -151,12 +151,6 @@
                 </li>
 
                 @role('operator')
-                <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
-                    <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
-                        <i class="icon-rocket"></i>
-                        <span class="title">Kendaraan</span>
-                    </a>
-                </li>
                 <li class="nav-item @if (str_is('*.service.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.service.manage') }}" class="nav-link ">
                         <i class="icon-book-open"></i>
@@ -172,6 +166,12 @@
                 @endrole
 
                 @role('admin')
+                <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
+                    <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
+                        <i class="icon-rocket"></i>
+                        <span class="title">Kendaraan</span>
+                    </a>
+                </li>
                 <li class="nav-item @if (str_is('*.users.*', Route::currentRouteName())) open active @endif ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-users"></i>

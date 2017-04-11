@@ -75,9 +75,9 @@
                             <!-- navigation menu -->
                             <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
                             <ul class="nav sf-menu">
-                                <li class="active"><a href="car-listing.html">Home</a></li>
-                                <li><a href="car-listing.html">Hot Deals</a></li>
-                                <li><a href="car-listing.html">Vehicles</a></li>
+                                <li class="@if (str_is('*.home', Route::currentRouteName())) active @endif"><a href="{{ url('/') }}">Home</a></li>
+                                <li class="@if (str_is('*.mobil', Route::currentRouteName())) active @endif"><a href="{{ url('mobil') }}">Mobil</a></li>
+                                <li class="@if (str_is('*.motor', Route::currentRouteName())) active @endif"><a href="{{ url('motor') }}">Motor</a></li>
                                 <li><a href="{{ url('login') }}">Login</a></li>
                                 <li>
                                     <ul class="social-icons">
