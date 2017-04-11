@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Apr 2017 pada 08.56
+-- Generation Time: 11 Apr 2017 pada 06.34
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -48,7 +48,10 @@ CREATE TABLE `kendaraan` (
 
 INSERT INTO `kendaraan` (`id`, `nama`, `image`, `merek`, `type`, `warna`, `plat_no`, `status`, `harga`, `tgl_service`, `kmmeter`, `created_at`, `updated_at`) VALUES
 (1, 'Honda Supra', '800086d106de50fa21eb6bc5992ebeb6.jpg', 'Honda', 1, 'Hitam', 'DK1000ED', 1, 75000, 14, 23007, '2017-03-08 19:10:07', '2017-04-08 18:39:51'),
-(2, 'Honda Scoopy', 'aee922459b322e4d2017bd748773eb89.jpg', 'Honda', 1, 'Hitam-Merah', 'DK3000NA', 1, 100000, 10, 30202, '2017-03-09 18:45:07', '2017-04-08 18:40:06');
+(2, 'Honda Scoopy', 'aee922459b322e4d2017bd748773eb89.jpg', 'Honda', 1, 'Hitam-Merah', 'DK3000NA', 1, 100000, 10, 30202, '2017-03-09 18:45:07', '2017-04-08 18:40:06'),
+(3, 'Honda Jazz', '99ee1ab1aef8787e1c6ae13eb0301d2b.jpg', 'Honda', 2, 'Merah', 'DK321LD', 1, 350000, 13, 100, '2017-04-10 19:55:49', '2017-04-10 20:05:50'),
+(4, 'Toyota Yaris', '97a0b061b0c70050d63df03da00776aa.jpg', 'Toyota', 2, 'Merah', 'DK454DI', 1, 400000, 5, 2000, '2017-04-10 20:05:37', '2017-04-10 20:05:37'),
+(5, 'Toyota Rush', '99b49f0e3ba3d71536cce5203b25fb92.jpg', 'Toyota', 2, 'Putih', 'DK900LI', 1, 400000, 14, 122, '2017-04-10 20:06:51', '2017-04-10 20:06:51');
 
 -- --------------------------------------------------------
 
@@ -273,7 +276,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kendaraan`
 --
 ALTER TABLE `kendaraan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `roles`
 --
