@@ -43,6 +43,7 @@ class ServiceController extends Controller
         $model->kendaraan_id = $id;
         $model->service_date = date('Y/m/d', strtotime($request->service_date));
         $model->total = $request->total;
+        $model->pic = $request->pic;
         $model->image = $file->basename;
         $model->save();
 

@@ -68,8 +68,13 @@
                         </div>
 
                         <div class="form-group form-md-line-input {{ $errors->has('total') ? ' has-error' : '' }}">
-                            {!! Form::number('total', $model->total, ['id'=>'total','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                            {!! Form::number('total', $model->total, ['id'=>'total','min'=>0,'placeholder'=>'','class'=>'form-control', 'required']) !!}
                             <label for="harga">Total Service</label>
+                        </div>
+
+                        <div class="form-group form-md-line-input {{ $errors->has('pic') ? ' has-error' : '' }}">
+                            {!! Form::text('pic', $model->pic, ['id'=>'pic','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                            <label for="nama">Penanggung Jawab</label>
                         </div>
 
                         <div class="form-group last">

@@ -46,11 +46,13 @@
                         <span class="caption-subject font-green sbold uppercase">Manage Kendaraan</span>
                     </div>
                     <div class="actions">
+                        @role('admin')
                         <div class="btn-group btn-group-devided">
                             <a href="{{ route('backend.kendaraan.create') }}" class="btn btn-circle green">
                                 <i class="fa fa-plus"></i> Add new data
                             </a>
                         </div>
+                        @endrole
                         <div class="btn-group">
                             <a class="btn red btn-outline btn-circle" href="javascript:;" data-toggle="dropdown">
                                 <i class="fa fa-share"></i>
@@ -108,12 +110,18 @@
                                     <td> {{ $row->warna }} </td>
                                     <td> {{ number_format($row->harga,0,',','.') }} </td>
                                     <td> {{ $row->getStatus() }} </td>
-                                    <td class="center" width="130">
+                                    <td class="center" @role('operator') width="150" @endrole @role('admin') width="120" @endrole >
                                         <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
+
+                                        @role('admin')
                                         <a href="{{ route('backend.kendaraan.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
-                                        @if($row->status == \App\Models\Kendaraan::S_TESERDIA)
-                                            <a href="{{ route('backend.transaksi.create',$row->id) }}" class="btn blue btn-xs"><i class="fa fa-check"></i></a>
-                                        @endif
+                                        @endrole
+                                        @role('operator')
+                                            @if($row->status == \App\Models\Kendaraan::S_TESERDIA)
+                                                <a href="{{ route('backend.transaksi.create',$row->id) }}" class="btn blue btn-xs"><i class="fa fa-check"></i></a>
+                                            @endif
+                                            <a href="{{ route('backend.service.create',$row->id) }}" class="btn green btn-xs"><i class="fa fa-cog"></i></a>
+                                        @endrole
                                         <!-- <a href="{{ route('backend.kendaraan.detail',$row->id) }}" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a> -->
                                     </td>
                                 </tr>
@@ -127,6 +135,7 @@
             <!-- End: life time stats -->
         </div>
     </div>
+
     <!-- END PAGE BASE CONTENT -->
 @endsection
 

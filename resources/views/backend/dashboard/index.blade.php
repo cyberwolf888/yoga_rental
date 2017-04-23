@@ -82,8 +82,8 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-bar-chart font-dark hide"></i>
-                        <span class="caption-subject font-dark bold uppercase">Site Visits</span>
-                        <span class="caption-helper">weekly stats...</span>
+                        <span class="caption-subject font-dark bold uppercase">Sales</span>
+                        <span class="caption-helper">Monthly stats...</span>
                     </div>
                 </div>
                 <div class="portlet-body">

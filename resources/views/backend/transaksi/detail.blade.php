@@ -164,7 +164,7 @@
                         <tr>
                             <td>
                                 <h4><small>Total</small></h4>
-                                <h4>Rp {{ number_format($model->total,0,',','.') }}</h4>
+                                <h4>Rp {{ number_format($model->total+$model->denda,0,',','.') }}</h4>
                             </td>
                         </tr>
                         <tr>
@@ -267,6 +267,7 @@
     <form method="post" action="{{ route('backend.transaksi.finish',$model->id) }}" id="frm_finish">
         {{ csrf_field() }}
         <input type="hidden" name="km_end" id="km_end">
+        <input type="hidden" name="biaya_tambahan" id="biaya_tambahan">
     </form>
 @endsection
 
@@ -288,7 +289,8 @@
         $(document).scroll(function(){$(".date-picker").datepicker("place")});
 
         $("#finish").click(function(){
-            bootbox.prompt("Km meter motor", function(result){ $("#km_end").val(result); $("#frm_finish").submit(); });
+            bootbox.prompt("Km meter motor", function(result){ $("#km_end").val(result); $("#frm_finish").submit();});
+            bootbox.prompt("Biaya Tambahan", function(result){ $("#biaya_tambahan").val(result);  });
         });
 
     });

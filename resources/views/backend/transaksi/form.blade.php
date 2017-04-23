@@ -108,12 +108,12 @@
                         </div>
 
                         <div class="form-group form-md-line-input {{ $errors->has('durasi') ? ' has-error' : '' }}">
-                            {!! Form::number('durasi', $model->durasi, ['id'=>'durasi','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                            {!! Form::number('durasi', $model->durasi, ['id'=>'durasi','placeholder'=>'','class'=>'form-control', 'min'=>0, 'required']) !!}
                             <label for="harga">Durasi</label>
                         </div>
 
                         <div class="form-group form-md-line-input {{ $errors->has('total') ? ' has-error' : '' }}">
-                            {!! Form::number('total', $model->total, ['id'=>'total','placeholder'=>'','class'=>'form-control', 'required', 'readonly']) !!}
+                            {!! Form::number('total', $model->total, ['id'=>'total','placeholder'=>'','class'=>'form-control', 'required', 'min'=>0, 'readonly']) !!}
                             <label for="harga">Total</label>
                         </div>
 

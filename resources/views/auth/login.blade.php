@@ -36,10 +36,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <label class="rememberme mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="remember" value="1" /> Remember me
-                <span></span>
-            </label>
+
             <button type="submit" class="btn green pull-right"> Login </button>
         </div>
     </form>

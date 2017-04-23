@@ -65,6 +65,12 @@
                         </tr>
                         <tr>
                             <td>
+                                <h4><small>Penanggung Jawab</small></h4>
+                                <h4>{{ $model->pic }}</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <h4><small>Total Service</small></h4>
                                 <h4>{{ number_format($model->total,0,',','.') }}</h4>
                             </td>

@@ -66,6 +66,7 @@
                     <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
                     <?php $_service = \App\Models\Service::getService() ?>
 
+                    @role('operator')
                     <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <i class="icon-bell"></i>
@@ -94,7 +95,7 @@
                             @endif
                         </ul>
                     </li>
-
+                    @endrole
                     <!-- END NOTIFICATION DROPDOWN -->
 
                     <li class="dropdown dropdown-user dropdown-dark">
@@ -149,7 +150,12 @@
                 <li class="heading">
                     <h3 class="uppercase">Features</h3>
                 </li>
-
+                <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
+                    <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
+                        <i class="icon-rocket"></i>
+                        <span class="title">Kendaraan</span>
+                    </a>
+                </li>
                 @role('operator')
                 <li class="nav-item @if (str_is('*.service.*', Route::currentRouteName())) active @endif ">
                     <a href="{{ route('backend.service.manage') }}" class="nav-link ">
@@ -166,12 +172,7 @@
                 @endrole
 
                 @role('admin')
-                <li class="nav-item @if (str_is('*.kendaraan.*', Route::currentRouteName())) active @endif ">
-                    <a href="{{ route('backend.kendaraan.manage') }}" class="nav-link ">
-                        <i class="icon-rocket"></i>
-                        <span class="title">Kendaraan</span>
-                    </a>
-                </li>
+
                 <li class="nav-item @if (str_is('*.users.*', Route::currentRouteName())) open active @endif ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-users"></i>

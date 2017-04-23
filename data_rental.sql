@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 Apr 2017 pada 06.34
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- Generation Time: Apr 20, 2017 at 08:12 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kendaraan`
+-- Table structure for table `kendaraan`
 --
 
 CREATE TABLE `kendaraan` (
@@ -43,20 +43,22 @@ CREATE TABLE `kendaraan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kendaraan`
+-- Dumping data for table `kendaraan`
 --
 
 INSERT INTO `kendaraan` (`id`, `nama`, `image`, `merek`, `type`, `warna`, `plat_no`, `status`, `harga`, `tgl_service`, `kmmeter`, `created_at`, `updated_at`) VALUES
-(1, 'Honda Supra', '800086d106de50fa21eb6bc5992ebeb6.jpg', 'Honda', 1, 'Hitam', 'DK1000ED', 1, 75000, 14, 23007, '2017-03-08 19:10:07', '2017-04-08 18:39:51'),
-(2, 'Honda Scoopy', 'aee922459b322e4d2017bd748773eb89.jpg', 'Honda', 1, 'Hitam-Merah', 'DK3000NA', 1, 100000, 10, 30202, '2017-03-09 18:45:07', '2017-04-08 18:40:06'),
-(3, 'Honda Jazz', '99ee1ab1aef8787e1c6ae13eb0301d2b.jpg', 'Honda', 2, 'Merah', 'DK321LD', 1, 350000, 13, 100, '2017-04-10 19:55:49', '2017-04-10 20:05:50'),
+(1, 'Honda Supra', '800086d106de50fa21eb6bc5992ebeb6.jpg', 'Honda', 1, 'Hitam', 'DK1000ED', 2, 75000, 14, 25000, '2017-03-08 19:10:07', '2017-04-19 22:07:12'),
+(2, 'Honda Scoopy', 'aee922459b322e4d2017bd748773eb89.jpg', 'Honda', 1, 'Hitam-Merah', 'DK3000NA', 1, 100000, 10, 32202, '2017-03-09 18:45:07', '2017-04-18 19:50:09'),
+(3, 'Honda Jazz', '99ee1ab1aef8787e1c6ae13eb0301d2b.jpg', 'Honda', 2, 'Merah', 'DK321LD', 1, 350000, 13, 0, '2017-04-10 19:55:49', '2017-04-17 22:33:21'),
 (4, 'Toyota Yaris', '97a0b061b0c70050d63df03da00776aa.jpg', 'Toyota', 2, 'Merah', 'DK454DI', 1, 400000, 5, 2000, '2017-04-10 20:05:37', '2017-04-10 20:05:37'),
-(5, 'Toyota Rush', '99b49f0e3ba3d71536cce5203b25fb92.jpg', 'Toyota', 2, 'Putih', 'DK900LI', 1, 400000, 14, 122, '2017-04-10 20:06:51', '2017-04-10 20:06:51');
+(5, 'Toyota Rush', '99b49f0e3ba3d71536cce5203b25fb92.jpg', 'Toyota', 2, 'Putih', 'DK900LI', 1, 400000, 14, 0, '2017-04-10 20:06:51', '2017-04-18 21:10:51'),
+(6, 'mio', '9e838e25a3f89805946558d143080ee8.jpg', 'yamaha', 1, 'merah', 'DK1111QQ', 1, 75000, 17, 6000, '2017-04-16 23:13:52', '2017-04-18 21:50:33'),
+(7, 'mio', '61b7cdce520962025dd95b648e143ca1.jpg', 'yamaha', 1, 'putih', 'DK123ww', 1, 75000, 19, 1000, '2017-04-18 23:04:34', '2017-04-18 23:04:34');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -65,7 +67,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
@@ -76,7 +78,7 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -88,7 +90,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -101,7 +103,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
@@ -111,7 +113,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role_user`
+-- Table structure for table `role_user`
 --
 
 CREATE TABLE `role_user` (
@@ -120,7 +122,7 @@ CREATE TABLE `role_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `role_user`
+-- Dumping data for table `role_user`
 --
 
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
@@ -132,7 +134,7 @@ INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service`
+-- Table structure for table `service`
 --
 
 CREATE TABLE `service` (
@@ -141,22 +143,15 @@ CREATE TABLE `service` (
   `service_date` date DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `pic` varchar(100) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `service`
---
-
-INSERT INTO `service` (`id`, `kendaraan_id`, `service_date`, `total`, `image`, `created_at`, `updated_at`) VALUES
-(1, 2, '2017-08-03', 73000, '146b8736183d68296ec2a76157f19052.jpg', '2017-03-09 20:07:14', '2017-03-09 20:07:14'),
-(3, 1, '2017-03-16', 100000, 'cf09a56182f8ffda31c082129a3b06ff.jpg', '2017-03-15 18:32:58', '2017-03-15 18:32:58');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -181,18 +176,16 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`id`, `kendaraan_id`, `nama`, `telp`, `alamat`, `id_type`, `id_no`, `id_image`, `tgl_sewa`, `durasi`, `kmstart`, `kmend`, `denda`, `total`, `status`, `tgl_kembali`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Eriko', '085737364525', 'Jalan Nangka', 1, '6210599048739', '4486a13f73e18caf871f5d21250e5ca4.jpg', '2017-03-07', 3, 29890, 30202, 300000, 300000, 2, '2017-03-13', '2017-02-11 20:46:17', '2017-03-13 04:25:16'),
-(2, 1, 'Hendra', '0822373734', 'Jalan Nangka Utara', 2, '1231232334345', '68904290369c28c06c8d1fe012501070.jpg', '2017-03-16', 3, 29890, 30202, 0, 225000, 2, '2017-03-16', '2017-03-15 18:54:09', '2017-03-15 18:54:13'),
-(3, 2, 'Hendra Wijaya', '082247464196', 'Jalan Nangka', 1, '084874983738937', 'a65b3f794501859f0ecbb4dbae0c0a03.jpg', '2017-04-09', 3, 30202, 30230, 0, 300000, 2, '2017-04-09', '2017-04-08 18:46:05', '2017-04-08 19:04:47');
+(1, 1, 'aditya', '081234556432', 'denpasar', 1, '00832864364383754732', 'dafaa881edc3c8a12b0aaa0eb62a942d.jpg', '2017-04-20', 4, 25000, 0, 0, 300000, 1, NULL, '2017-04-19 22:07:12', '2017-04-19 22:07:12');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -209,12 +202,12 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `telp`, `password`, `remember_token`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '085737343456', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', 'z3RC3VvwDcoxtaTzUpzSbMOxrAatKYpTOk5clJSdFAeXjNJMmn5osf45DLUR', 1, 1, '2017-03-02 21:49:08', '2017-04-08 21:40:17'),
-(2, 'Test Operator', 'operator@mail.com', '08573736483', '$2y$10$GVVx1dXRRaMCeqKxLOAxoesiIPHRtyVmed7lR9/ejUXa6iaBMDYXi', 'LU2D4Hlg0ARARGABHAPnTg5ic2GZYoqpt5S0MyCb8rIXQAgVF1CBDTzSyRRL', 2, 1, '2017-03-13 05:44:16', '2017-04-08 22:44:48'),
+(1, 'admin', 'admin@mail.com', '085737343456', '$2y$10$Ga3rIFEmrG.8QsWkpHddrOgoxl6JhPfP4SY/CgCauTBnTpHzLpHTu', 'sQ1tVhBLxrB7wG7kcKwNQ0jgzpObuX3Ji2emVXeCHpoDFUDgeYofel01LTRT', 1, 1, '2017-03-02 21:49:08', '2017-04-19 21:57:27'),
+(2, 'Test Operator', 'operator@mail.com', '08573736483', '$2y$10$GVVx1dXRRaMCeqKxLOAxoesiIPHRtyVmed7lR9/ejUXa6iaBMDYXi', 'o7VzbtCoeRnh7JLygbq1PisYaZ9yyb9HLpnQswJjSP7MhzbUzn3Dq0cycjgq', 2, 1, '2017-03-13 05:44:16', '2017-04-19 21:56:35'),
 (3, 'Admin Test', 'admin2@mail.com', '085737343456', '$2y$10$2dAYQNTVNhDruggKIqRaTuZtAQETnhKAr2LLtNeBX30c/.ntRGzOG', NULL, 1, 1, '2017-03-14 19:21:49', '2017-03-14 19:21:49'),
 (4, 'Operator Awesome', 'awesome@mail.com', '08474283728', '$2y$10$YgZeq5P7BJnIJvcLIJbLSORIW9i0XOWJ.RbniMjZ0d5AKFmH7Y.tW', 'RIgzVSlCTBElZPgrwG48uUmNF7XgYhwPL8kqvTl1UR8lRgH9NXl5UjumNPPs', 2, 1, '2017-03-14 19:25:49', '2017-03-14 19:29:47');
 
@@ -276,7 +269,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kendaraan`
 --
 ALTER TABLE `kendaraan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -286,23 +279,23 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `role_user`
+-- Constraints for table `role_user`
 --
 ALTER TABLE `role_user`
   ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

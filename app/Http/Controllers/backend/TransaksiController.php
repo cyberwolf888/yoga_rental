@@ -72,6 +72,8 @@ class TransaksiController extends Controller
         $model->status = Transaksi::S_NEW;
         $model->save();
 
+        $kendaraan->status = Kendaraan::S_SEDANG_DISEWA;
+        $kendaraan->save();
         return redirect()->route('backend.transaksi.manage');
     }
 
@@ -90,13 +92,14 @@ class TransaksiController extends Controller
     {
         $model = Transaksi::findOrFail($id);
         $model->status = Transaksi::S_FINSIH;
-        $model->denda = $model->getDenda();
+        $model->denda = $model->getDenda()+$request->biaya_tambahan;
         $model->tgl_kembali = date('Y-m-d');
         $model->kmend = $request->km_end;
         $model->save();
 
         $kendaraan = $model->kendaraan;
         $kendaraan->kmmeter = $request->km_end;
+        $kendaraan->status = Kendaraan::S_TESERDIA;
         $kendaraan->save();
 
         return redirect()->route('backend.transaksi.manage');
@@ -108,13 +111,15 @@ class TransaksiController extends Controller
         $model->status = Transaksi::S_CANCELED;
         $model->save();
 
+        $kendaraan = $model->kendaraan;
+        $kendaraan->status = Kendaraan::S_TESERDIA;
+        $kendaraan->save();
         return redirect()->route('backend.transaksi.manage');
     }
 
     public function invoice($id)
     {
         $model = Transaksi::findOrFail($id);
-
         return view('backend/transaksi/invoice',[
             'model'=>$model
         ]);

@@ -85,6 +85,7 @@
                                 <th> No </th>
                                 <th> Nama Kendaraan </th>
                                 <th> Tanggal Service </th>
+                                <th> Penanggung Jawab </th>
                                 <th> Total </th>
                                 <th> Action </th>
                             </tr>
@@ -96,6 +97,7 @@
                                     <td> {{ $no }} </td>
                                     <td> {{ $row->kendaraan->nama }} - {{ $row->kendaraan->plat_no }}</td>
                                     <td> {{ date('d/m/Y',strtotime($row->service_date)) }} </td>
+                                    <td> {{ $row->pic }} </td>
                                     <td> {{ number_format($row->total,0,',','.') }} </td>
                                     <td class="center" width="130">
                                         <a href="{{ route('backend.service.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>

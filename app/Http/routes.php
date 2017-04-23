@@ -111,7 +111,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'as'=>'backend'], f
     */
     Route::group(['prefix' => 'laporan','middleware' => ['role:admin'], 'as'=>'.laporan'], function() {
         Route::get('/', 'Backend\LaporanController@priod')->name('.priod');
-        Route::post('/result', 'Backend\LaporanController@result')->name('.result');
+        Route::post('/bulanan', 'Backend\LaporanController@bulanan')->name('.bulanan');
+        Route::post('/tanggal', 'Backend\LaporanController@tanggal')->name('.tanggal');
     });
 
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Kendaraan;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Image;
 use App\Http\Requests;
@@ -12,7 +13,7 @@ class KendaraanController extends Controller
 {
     public function index()
     {
-        $model = Kendaraan::all();
+        $model = Kendaraan::orderBy('id','desc')->get();
         return view('backend/kendaraan/manage',[
             'model'=>$model
         ]);
@@ -60,7 +61,8 @@ class KendaraanController extends Controller
     public function show($id)
     {
         $model = Kendaraan::findOrFail($id);
-        return view('backend/kendaraan/detail',['model'=>$model]);
+        $service = Service::where('kendaraan_id',$id)->orderBy('id','Desc')->get();
+        return view('backend/kendaraan/detail',['model'=>$model,'service'=>$service]);
     }
 
     public function edit($id)
